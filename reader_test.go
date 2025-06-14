@@ -10,19 +10,19 @@ import (
 const _testfilepath = "test_files/1.xlsx"
 
 func TestNewReader(t *testing.T) {
-	reader, err := tabeludo.NewReader(_testfilepath)
+	r, err := tabeludo.NewReader(_testfilepath)
 	assert.Nil(t, err)
 
-	assert.NotNil(t, reader)
-	reader.Close()
+	assert.NotNil(t, r)
+	r.Close()
 }
 
 func TestClose(t *testing.T) {
-	reader, err := tabeludo.NewReader(_testfilepath)
+	r, err := tabeludo.NewReader(_testfilepath)
 	assert.Nil(t, err)
 
-	err = reader.Close()
+	err = r.Close()
 	assert.Nil(t, err)
-	err = reader.Close()
+	err = r.Close()
 	assert.Equal(t, "close test_files/1.xlsx: file already closed", err.Error())
 }
