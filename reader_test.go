@@ -7,10 +7,11 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-const _testfilepath = "test_files/1.xlsx"
+const _validfile = "test_files/valid_file.xlsx"
+const _hugeworksheetname = "test_files/huge_worksheet_name.xlsx"
 
 func TestNewReader(t *testing.T) {
-	r, err := tabeludo.NewReader(_testfilepath)
+	r, err := tabeludo.NewReader(_validfile)
 	assert.Nil(t, err)
 
 	assert.NotNil(t, r)
@@ -18,7 +19,7 @@ func TestNewReader(t *testing.T) {
 }
 
 func TestClose(t *testing.T) {
-	r, err := tabeludo.NewReader(_testfilepath)
+	r, err := tabeludo.NewReader(_validfile)
 	assert.Nil(t, err)
 
 	err = r.Close()
